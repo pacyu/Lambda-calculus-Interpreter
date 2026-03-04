@@ -25,7 +25,7 @@ parseIdent (c : cs)
   where
     (rest, tail') = span (\ch -> isAlphaNum ch || ch == '_' || ch == '\'') (c : cs)
 
-parseLet :: String -> Maybe (String, String)
+parseLet :: Parser String
 parseLet s = case break (== '=') s of
   (name, '=' : rest) -> Just (trim name, trim rest)
   _ -> Nothing

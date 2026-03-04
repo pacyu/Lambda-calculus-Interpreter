@@ -80,7 +80,7 @@ processCommand input
         liftIO $ putStrLn "当前绑定:"
         mapM_ (\(name, expr) -> liftIO $ putStrLn $ "  " ++ name ++ " = " ++ show expr) binds
     return True
-  | Just rest <- stripPrefix ":let " input = do
+  | Just rest <- stripPrefix ":let" input = do
       case parseLet rest of
         Nothing -> liftIO $ putStrLn "格式错误，应为: :let 变量名 = 表达式"
         Just (name, exprStr) -> do
